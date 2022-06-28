@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import logo from "../assets/logo.svg";
 import avatar from "../assets/image-avatar.png";
 
-import CartContext from "../context/cartContext.js";
+import CartContext from "../context/CartContext.js";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
