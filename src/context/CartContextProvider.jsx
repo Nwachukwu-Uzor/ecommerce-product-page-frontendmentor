@@ -1,4 +1,4 @@
-import CartContext from "./cartContext";
+import CartContext from "./CartContext";
 
 import React, { useState } from "react";
 
