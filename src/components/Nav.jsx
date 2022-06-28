@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../assets/logo.svg";
 import avatar from "../assets/image-avatar.png";
 
+import CartContext from "../context/cartContext";
+
 const Nav = () => {
   const [open, setOpen] = useState(false);
+
+  const { cart } = useContext(CartContext);
 
   const handleOpen = () => setOpen((op) => !op);
 
@@ -74,13 +78,12 @@ const Nav = () => {
         </div>
         <div className="flex justify-between items-center ml-auto">
           <div className="relative mr-8 text-3xl">
-            <ion-icon
-              name="cart-outline"
-              className="p-1 text-indigo-600 border-2"
-            ></ion-icon>
-            <span className="absolute right-0 top-0 rounded-full w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center bg-[#fe7e1c] font-bold">
-              3
-            </span>
+            <ion-icon name="cart-outline"></ion-icon>
+            {cart.length > 0 && (
+              <span className="absolute right-0 top-0 rounded-full w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center bg-[#fe7e1c] font-bold">
+                {cart.length}
+              </span>
+            )}
           </div>
           <img src={avatar} className="h-[30px]" alt="avatar" />
         </div>

@@ -31,6 +31,7 @@ const images = [
 
 const Product = () => {
   const [current, setCurrent] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   const handleLeft = () => {
     if (current === 0) {
@@ -47,6 +48,17 @@ const Product = () => {
     }
 
     setCurrent((cur) => cur + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity === 0) {
+      return;
+    }
+    setQuantity((qty) => qty - 1);
+  };
+
+  const handleIncrement = () => {
+    setQuantity((qty) => qty + 1);
   };
 
   return (
@@ -136,11 +148,17 @@ const Product = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-3 md:gap-8 items-center md:items-stretch">
             <div className="w-full flex justify-between items-center py-2 bg-[#f7f8fd] px-2 rounded-lg">
-              <button className="text-[#fe7e1c] font-extrabold text-2xl">
+              <button
+                className="text-[#fe7e1c] font-extrabold text-2xl"
+                onClick={handleDecrement}
+              >
                 <ion-icon name="remove-outline"></ion-icon>
               </button>
-              <p className="text-2xl font-extrabold">0</p>
-              <button className="text-[#fe7e1c] font-extrabold text-2xl">
+              <p className="text-2xl font-extrabold">{quantity}</p>
+              <button
+                className="text-[#fe7e1c] font-extrabold text-2xl"
+                onClick={handleIncrement}
+              >
                 <ion-icon name="add-outline"></ion-icon>
               </button>
             </div>
